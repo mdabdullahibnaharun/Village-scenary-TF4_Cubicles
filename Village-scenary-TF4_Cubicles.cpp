@@ -517,7 +517,7 @@ void draw_object()
         sun();
         river();
         boat();
-        line();
+        //line();
     }
     else
     {
@@ -531,8 +531,7 @@ void draw_object()
         moon();
         river();
         boat();
-        line();
-        moon();
+        //line();
     }
 }
 
