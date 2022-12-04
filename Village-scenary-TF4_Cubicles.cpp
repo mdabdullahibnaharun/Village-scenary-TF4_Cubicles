@@ -503,7 +503,7 @@ void line() {
 
 }
 
-// function for chose day or night scenario
+// function for chose day or night scenary
 void draw_object()
 {
     if (day == 1)
