@@ -582,7 +582,7 @@ int main(int argc, char** argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(720, 640);
     glutInitWindowPosition(100, 100);
-    glutCreateWindow("193-15-13426 || 193-15-13355");
+    glutCreateWindow("Group-5 || 193-15-13426 || 193-15-13355");
     glutDisplayFunc(display);
     glutKeyboardFunc(keyboardFunc);
     init();
