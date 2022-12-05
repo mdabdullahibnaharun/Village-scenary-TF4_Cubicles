@@ -34,7 +34,96 @@ float x_position = 0, flyObj = 0, _angle = 0;
 int posx = 0, posy = 0;
 int day = 1;
 
-//mon
+//sun
+void sun()
+{
+    glColor3f(1, 0.25, 0);
+    int a, b, E, rad, x, y, h, SE;
+    a = 200;
+    b = 200;
+    x = 0;
+    rad = 50;
+    y = rad;
+    h = 1 - rad;
+    glBegin(GL_POLYGON);
+    glVertex3i(x + b, y + b, 0);
+
+    if (h >= 0)
+    {
+        SE = true;
+        E = false;
+    }
+    else
+    {
+        E = true;
+        SE = false;
+
+    }
+    while (y >= x)
+    {
+        if (SE)
+        {
+            h = h + 5 + 2 * (x - y);
+            if (h >= 0)
+            {
+                SE = true;
+                E = false;
+            }
+            else
+            {
+                E = true;
+                SE = false;
+
+            }
+            x++;
+            y--;
+            glVertex3f(x + a, y + b, 0.0);
+            glVertex3f(y + a, x + b, 0.0);
+            glVertex3f(-y + a, x + b, 0.0);
+            glVertex3f(-x + a, -y + b, 0.0);
+            glVertex3f(-y + a, -x + b, 0.0);
+            glVertex3f(y + a, -x + b, 0.0);
+            glVertex3f(x + a, -y + b, 0.0);
+            glVertex3f(x + a, y + b, 0.0);
+            glVertex3f(-x + a, y + b, 0.0);
+        }
+        if (E)
+        {
+            h = h + 3 + 2 * x;
+            if (h >= 0)
+            {
+                SE = true;
+                E = false;
+            }
+            else
+            {
+                E = true;
+                SE = false;
+
+            }
+            x++;
+            glVertex3f(x + a, y + b, 0.0);
+            glVertex3i(y + a, x + b, 0.0);
+            glVertex3i(-y + a, x + b, 0.0);
+            glVertex3i(-x + a, -y + b, 0.0);
+            glVertex3i(-y + a, -x + b, 0.0);
+            glVertex3i(y + a, -x + b, 0.0);
+            glVertex3i(x + a, -y + b, 0.0);
+            glVertex3i(x + a, y + b, 0.0);
+            glVertex3i(-x + a, y + b, 0.0);
+        }
+    }
+    glEnd();
+
+    glColor3f(1, 0.5, 0.02);
+    glBegin(GL_LINES);
+    glVertex3i(400, 400, 0);
+    glVertex3i(400, 350, 0);
+    glEnd();
+}
+
+
+//moon
 void moon()
 {
 
@@ -129,91 +218,102 @@ void moon()
     glEnd();
 }
 
-//sun
-void sun()
-{
-    glColor3f(1, 0.25, 0);
-    int a, b, E, rad, x, y, h, SE;
-    a = 200;
-    b = 200;
-    x = 0;
-    rad = 50;
-    y = rad;
-    h = 1 - rad;
+// tree in land
+void treeDraw() {
+    ///tree1
+    glColor3f(0.6156863, 0, 0);
     glBegin(GL_POLYGON);
-    glVertex3i(x + b, y + b, 0);
-
-    if (h >= 0)
-    {
-        SE = true;
-        E = false;
-    }
-    else
-    {
-        E = true;
-        SE = false;
-
-    }
-    while (y >= x)
-    {
-        if (SE)
-        {
-            h = h + 5 + 2 * (x - y);
-            if (h >= 0)
-            {
-                SE = true;
-                E = false;
-            }
-            else
-            {
-                E = true;
-                SE = false;
-
-            }
-            x++;
-            y--;
-            glVertex3f(x + a, y + b, 0.0);
-            glVertex3f(y + a, x + b, 0.0);
-            glVertex3f(-y + a, x + b, 0.0);
-            glVertex3f(-x + a, -y + b, 0.0);
-            glVertex3f(-y + a, -x + b, 0.0);
-            glVertex3f(y + a, -x + b, 0.0);
-            glVertex3f(x + a, -y + b, 0.0);
-            glVertex3f(x + a, y + b, 0.0);
-            glVertex3f(-x + a, y + b, 0.0);
-        }
-        if (E)
-        {
-            h = h + 3 + 2 * x;
-            if (h >= 0)
-            {
-                SE = true;
-                E = false;
-            }
-            else
-            {
-                E = true;
-                SE = false;
-
-            }
-            x++;
-            glVertex3f(x + a, y + b, 0.0);
-            glVertex3i(y + a, x + b, 0.0);
-            glVertex3i(-y + a, x + b, 0.0);
-            glVertex3i(-x + a, -y + b, 0.0);
-            glVertex3i(-y + a, -x + b, 0.0);
-            glVertex3i(y + a, -x + b, 0.0);
-            glVertex3i(x + a, -y + b, 0.0);
-            glVertex3i(x + a, y + b, 0.0);
-            glVertex3i(-x + a, y + b, 0.0);
-        }
-    }
+    glVertex3i(-90, -250, 0);
+    glVertex3i(-90, -110, 0);
+    glVertex3i(-70, -110, 0);
+    glVertex3i(-70, -250, 0);
     glEnd();
 
-    glColor3f(1, 0.5, 0.02);
-    glBegin(GL_LINES);
-    glVertex3i(400, 400, 0);
-    glVertex3i(400, 350, 0);
+    glColor3f(0.0, 0.5, 0.0);
+    glBegin(GL_POLYGON);
+    glVertex3i(-150, -110, 0);
+    glVertex3i(-85, -40, 0);
+    glVertex3i(-15, -110, 0);
+    glEnd();
+
+    glColor3f(0.0, 0.5, 0.0);
+    glBegin(GL_POLYGON);
+    glVertex3i(-145, -90, 0);
+    glVertex3i(-85, -20, 0);
+    glVertex3i(-20, -90, 0);
+    glEnd();
+
+    glColor3f(0.0, 0.5, 0.0);
+    glBegin(GL_POLYGON);
+    glVertex3i(-140, -70, 0);
+    glVertex3i(-85, 0, 0);
+    glVertex3i(-25, -70, 0);
+    glEnd();
+
+    ///tree2
+    glColor3f(0.6156863, 0, 0);
+    glBegin(GL_POLYGON);
+    glVertex3i(190, -250, 0);
+    glVertex3i(190, -110, 0);
+    glVertex3i(170, -110, 0);
+    glVertex3i(170, -250, 0);
+    glEnd();
+
+    glColor3f(0.0, 0.5, 0.0);
+    glBegin(GL_POLYGON);
+    glVertex3i(250, -110, 0);
+    glVertex3i(185, -40, 0);
+    glVertex3i(115, -110, 0);
+    glEnd();
+
+    glColor3f(0.0, 0.5, 0.0);
+    glBegin(GL_POLYGON);
+    glVertex3i(245, -90, 0);
+    glVertex3i(185, -20, 0);
+    glVertex3i(120, -90, 0);
+    glEnd();
+
+    glColor3f(0.0, 0.5, 0.0);
+    glBegin(GL_POLYGON);
+    glVertex3i(240, -70, 0);
+    glVertex3i(185, 0, 0);
+    glVertex3i(125, -70, 0);
+    glEnd();
+
+}
+
+
+//boat in river
+void boat() {
+
+    glColor3ub(17, 53, 35);
+    glBegin(GL_TRIANGLES);
+    glVertex2d(150, -350);
+    glVertex2d(200, -350);
+    glVertex2d(200, -380);
+    glEnd();
+
+    glColor3ub(17, 53, 35);
+    glBegin(GL_POLYGON);
+    glVertex2d(200, -350);
+    glVertex2d(300, -350);
+    glVertex2d(300, -380);
+    glVertex2d(200, -380);
+    glEnd();
+
+    glColor3ub(17, 53, 35);
+    glBegin(GL_POLYGON);
+    glVertex2d(300, -350);
+    glVertex2d(350, -350);
+    glVertex2d(300, -380);
+    glEnd();
+
+    glColor3ub(108, 93, 67);
+    glBegin(GL_POLYGON);
+    glVertex2d(200, -350);
+    glVertex2d(220, -320);
+    glVertex2d(280, -320);
+    glVertex2d(300, -350);
     glEnd();
 }
 
@@ -363,40 +463,6 @@ void house(int xPos, int yPos)
     glEnd();
 }
 
-//boat in river
-void boat() {
-
-    glColor3ub(17, 53, 35);
-    glBegin(GL_TRIANGLES);
-    glVertex2d(150, -350);
-    glVertex2d(200, -350);
-    glVertex2d(200, -380);
-    glEnd();
-
-    glColor3ub(17, 53, 35);
-    glBegin(GL_POLYGON);
-    glVertex2d(200, -350);
-    glVertex2d(300, -350);
-    glVertex2d(300, -380);
-    glVertex2d(200, -380);
-    glEnd();
-
-    glColor3ub(17, 53, 35);
-    glBegin(GL_POLYGON);
-    glVertex2d(300, -350);
-    glVertex2d(350, -350);
-    glVertex2d(300, -380);
-    glEnd();
-
-    glColor3ub(108, 93, 67);
-    glBegin(GL_POLYGON);
-    glVertex2d(200, -350);
-    glVertex2d(220, -320);
-    glVertex2d(280, -320);
-    glVertex2d(300, -350);
-    glEnd();
-}
-
 // river
 void river() {
     glColor3f(0, 0.67, 1);
@@ -406,83 +472,6 @@ void river() {
     glVertex2d(-400, -400);
     glVertex2d(400, -400);
     glEnd();
-}
-
-// tree in land
-void treeDraw() {
-    ///tree1
-    glColor3f(0.6156863, 0, 0);
-    glBegin(GL_POLYGON);
-    glVertex3i(-90, -250, 0);
-    glVertex3i(-90, -110, 0);
-    glVertex3i(-70, -110, 0);
-    glVertex3i(-70, -250, 0);
-    glEnd();
-
-    glColor3f(0.0, 0.5, 0.0);
-    glBegin(GL_POLYGON);
-    glVertex3i(-150, -110, 0);
-    glVertex3i(-85, -40, 0);
-    glVertex3i(-15, -110, 0);
-    glEnd();
-
-    glColor3f(0.0, 0.5, 0.0);
-    glBegin(GL_POLYGON);
-    glVertex3i(-145, -90, 0);
-    glVertex3i(-85, -20, 0);
-    glVertex3i(-20, -90, 0);
-    glEnd();
-
-    glColor3f(0.0, 0.5, 0.0);
-    glBegin(GL_POLYGON);
-    glVertex3i(-140, -70, 0);
-    glVertex3i(-85, 0, 0);
-    glVertex3i(-25, -70, 0);
-    glEnd();
-
-    ///tree2
-    glColor3f(0.6156863, 0, 0);
-    glBegin(GL_POLYGON);
-    glVertex3i(190, -250, 0);
-    glVertex3i(190, -110, 0);
-    glVertex3i(170, -110, 0);
-    glVertex3i(170, -250, 0);
-    glEnd();
-
-    glColor3f(0.0, 0.5, 0.0);
-    glBegin(GL_POLYGON);
-    glVertex3i(250, -110, 0);
-    glVertex3i(185, -40, 0);
-    glVertex3i(115, -110, 0);
-    glEnd();
-
-    glColor3f(0.0, 0.5, 0.0);
-    glBegin(GL_POLYGON);
-    glVertex3i(245, -90, 0);
-    glVertex3i(185, -20, 0);
-    glVertex3i(120, -90, 0);
-    glEnd();
-
-    glColor3f(0.0, 0.5, 0.0);
-    glBegin(GL_POLYGON);
-    glVertex3i(240, -70, 0);
-    glVertex3i(185, 0, 0);
-    glVertex3i(125, -70, 0);
-    glEnd();
-
-}
-
-//night effect
-void night_effect()
-{
-    glColor3f(0.10, 0.05, 0.10);
-    glBegin(GL_POLYGON);
-    glVertex3i(-400, -250, 0);
-    glVertex3i(-400, 400, 0);
-    glVertex3i(400, 400, 0);
-    glVertex3i(400, -250, 0);
-    glEnd();
-
 }
 
 // line draw for graph
@@ -503,7 +492,20 @@ void line() {
 
 }
 
-// function for chose day or night scenary
+//night effect
+void night_effect()
+{
+    glColor3f(0.10, 0.05, 0.10);
+    glBegin(GL_POLYGON);
+    glVertex3i(-400, -250, 0);
+    glVertex3i(-400, 400, 0);
+    glVertex3i(400, 400, 0);
+    glVertex3i(400, -250, 0);
+    glEnd();
+
+}
+
+// function for chose day or night 
 void draw_object()
 {
     if (day == 1)
@@ -517,7 +519,7 @@ void draw_object()
         sun();
         river();
         boat();
-        //line();
+        line();
     }
     else
     {
@@ -531,7 +533,7 @@ void draw_object()
         moon();
         river();
         boat();
-        //line();
+        line();
     }
 }
 
@@ -546,7 +548,7 @@ void display()
 
 void init() {
     glClearColor(0, 0.75, 1, 1);
-    glMatrixMode(GL_MODELVIEW);
+    glMatrixMode(GL_PROJECTION);
     gluOrtho2D(-400, 400, -400, 400);
 }
 
